@@ -123,7 +123,7 @@ st.sidebar.title("📊 InsightFlow")
 
 st.sidebar.caption("Your Spreadsheet Assistant")
 
-page = st.sidebar.radio("Navigation", ["Home", "Smart Data Cleaner"])
+page = st.sidebar.radio("Navigation", ["Home", "Smart Data Cleaner", "Advanced Analytics", "Business Reports"])
 
 
 # --------------------------------------------------
@@ -698,3 +698,15 @@ elif page == "Smart Data Cleaner":
                     st.success("Cleaning changes have been reset.")
 
                     st.rerun()
+
+
+# Advanced Analytics is isolated from the cleaning workflow.
+if page == "Advanced Analytics":
+    from advanced_analytics_ui import render_advanced_analytics
+    render_advanced_analytics(load_file)
+
+
+# Phase 5: standalone reporting page; analytics engines remain unchanged.
+if page == "Business Reports":
+    from business_reporting_ui import render_business_reports
+    render_business_reports()
